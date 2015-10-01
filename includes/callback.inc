@@ -78,6 +78,28 @@ function islandora_panorama_krpano_search_callback($object_id, $term) {
   drupal_exit();
 }
 
+function islandora_panorama_krpano_embed_callback(AbstractObject $object) {
+	$returnHTML = <<<EOHTML
+
+<html>
+<head>
+ <script type="text/javascript" src="/sites/all/modules/islandora_panorama_krpano/js/krpano.js"></script>
+</head>
+<body>
+<div id="pano">
+<script>
+
+EOHTML;
+
+$returnHTML .= 'embedpano({xml:"/panorama_krpano_xml/'. $object->id . '", target:"pano", html5:"prefer", passQueryParameters:true});';
+
+$returnHTML .= "</script>\n</div>\n</body>\n</html>\n";	
+echo $returnHTML;
+module_invoke_all('exit');
+exit();
+} // end FUNCTION islandora_panorama_krpano_embed_callback
+
+
 /* jd
 */
 function islandora_panorama_krpano_xml_callback(AbstractObject $object) {

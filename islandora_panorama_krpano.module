@@ -51,6 +51,14 @@ function islandora_panorama_krpano_menu() {
 	'file' => 'includes/callback.inc',
 	'type' => MENU_CALLBACK,
     ),
+   'panorama_krpano_embed/%islandora_object' => array(
+        'page callback' => 'islandora_panorama_krpano_embed_callback',
+        'page arguments' => array(1),
+        'access callback' => 'user_access',
+        'access arguments' => array(ISLANDORA_VIEW_OBJECTS),
+        'file' => 'includes/callback.inc',
+        'type' => MENU_CALLBACK,
+    ),
   );
 }
 
